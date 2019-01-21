@@ -8,7 +8,137 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Imports
+@import 'colors';
+@import 'users';
+@import 'posts';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+
+
+// Main
+body, html {
+  width: 100%;
+  height: 100%;
+  background: $background;
+  //overflow: hidden;
+}
+
+a {
+  color: $purple;
+  text-decoration: none;
+
+  &:hover {
+    color: $purple;
+  }
+}
+
+.btn-primary {
+  background: #8d7fee;
+  color: #fff;
+  border-color: #8d7fee;
+
+  &:hover {
+    background: darken(#8d7fee, 3%);
+    border-color: darken(#8d7fee, 3%);
+  }
+}
+
+.sidebar {
+  background: $sidebar;
+  height: 100vh;
+  padding: 0;
+  border-radius: 3px;
+  border-top: 0;
+  -webkit-box-shadow: 0px 14px 18px -1px rgba(135,135,135,0.7);
+  -moz-box-shadow: 0px 14px 18px -1px rgba(135,135,135,0.7);
+  box-shadow: 0px 14px 18px -1px rgba(135,135,135,0.7);
+  
+  ul {
+    margin-top: 20px;
+    width: 100%;
+
+    a {
+      color: $text;
+      &:hover {
+        color: $purple;
+      }
+    }
+    li {
+      a.nav-link.active {
+        color: $purple;
+        background: $emphasized;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.container-1 {
+    background: $sidebar;
+    width: 90%;
+    margin: 40px auto 0 auto;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+    -moz-box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+    box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+
+    .btn {
+      float: right;
+      margin-left: 10px;
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+      display: inline;
+    }
+
+}
+
+.container-2 {
+  width: 90%;
+  margin: 40px auto 0 auto;
+
+  a {
+    color: white;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .left button {
+    margin-right: 10px;
+  }
+
+}
+
+.container-3 {
+  h2 {
+    text-align: center;
+  }
+
+  padding: 30px;
+  width: 90%;
+  background: $sidebar;
+  margin: 60px auto 0 auto;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+  -moz-box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+  box-shadow: 0px 7px 18px -1px rgba(135,135,135,0.7);
+}
+
+.navbar-brand {
+  margin-left: 130px;
+}
+
+.nav-item.dropdown {
+  margin-right: -50px;
 }

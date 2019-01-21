@@ -29,5 +29,52 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    methods: {
+        sendPostRequest: function(data) {
+            let token = document.querySelector('meta[name="csrf-token"]').content;
+            let apiEndpoint = 'http://localhost:8000/ajax-users/';
+            let xhttp = new XMLHttpRequest();
+
+            let formated = data.map(function(item) {
+                return {
+                    'name': item.name,
+                    'email': item.email,
+                    'role': 'user'
+                }
+            });
+
+            xhttp.open("POST", apiEndpoint, true);
+
+            xhttp.setRequestHeader('X-CSRF-TOKEN', token);
+            xhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+            xhttp.onload = function() {
+                if (xhttp.status === 200) {
+                    console.log('Success');
+                }
+            };
+            console.log(formated);
+            xhttp.send(formated);
+        },
+
+        callApi: function() {
+            let apiEndpoint = 'https://jsonplaceholder.typicode.com/users';
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.onload = function () {
+
+                if (xhttp.status >= 200 && xhttp.status < 300) {
+                    let data = JSON.parse(xhttp.response);
+                    app.sendPostRequest(data);
+                } else {
+                    console.log('The request failed!');
+                }
+            };
+
+            xhttp.open("GET", apiEndpoint, true);
+            xhttp.send();
+        },
+    }
 });

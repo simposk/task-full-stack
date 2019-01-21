@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('dashboard', function () {
+    return redirect('posts');
 });
+
+Route::get('/', function () {
+    return redirect('posts');
+});
+
+Route::resource('users', 'UsersController');
+Route::resource('roles', 'RolesController');
+Route::resource('posts', 'PostsController');
+Route::post('/ajax-users', 'UsersController@upload');
